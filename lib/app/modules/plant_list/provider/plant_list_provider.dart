@@ -8,6 +8,7 @@ class PlantListProvider with ChangeNotifier {
 
   getPlantData() async {
     setLoading(true);
+    notifyListeners();
     plantData = await ApiServices().getData();
     setLoading(false);
     notifyListeners();

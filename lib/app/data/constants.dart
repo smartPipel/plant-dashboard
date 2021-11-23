@@ -8,8 +8,7 @@ import 'package:plant_dashboard/app/modules/settings/view/settings.dart';
 
 class Constans {
   // Constans._();
-  static const String ip = '104';
-  static const String baseUrl = 'http://192.168.0.$ip:3000';
+  static const String baseUrl = 'https://plant-api.smartpipel.repl.co/';
   static const String endpoints = '$baseUrl/api/plant';
 
   static const Color primaryColor = Color(0xFFCAF7E3);
