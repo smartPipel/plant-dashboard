@@ -5,6 +5,7 @@ import 'package:plant_dashboard/app/data/models/side_detail_preview_item.dart';
 import 'package:plant_dashboard/app/modules/plant_list/components/side_detail_preview.dart';
 import 'package:plant_dashboard/app/modules/plant_list/provider/plant_list_provider.dart';
 import 'package:plant_dashboard/app/modules/plant_list/provider/side_detail_preview_provider.dart';
+import 'package:plant_dashboard/app/widgets/custom_card.dart';
 import 'package:provider/provider.dart';
 
 class PlantListPage extends StatefulWidget {
@@ -36,8 +37,9 @@ class _PlantListPageState extends State<PlantListPage> {
       children: [
         Expanded(
           flex: 3,
-          child: Container(
-            padding: const EdgeInsets.all(10),
+          child: CustomCard(
+            elevation: 0,
+            padding: 10,
             child: Consumer<PlantListProvider>(
               builder: (context, snapshot, _) {
                 if (snapshot.plantData != null)
@@ -80,64 +82,60 @@ class _PlantListPageState extends State<PlantListPage> {
                                     snapshot.getPlantType(i),
                                   );
                                 },
-                                child: SizedBox(
+                                child: CustomCard(
+                                  elevation: 0,
                                   height: 150,
                                   width: 150,
-                                  child: Container(
-                                    padding: EdgeInsets.all(8),
-                                    margin: EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey.shade100,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(1.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              child: Image(
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                  '${Constans.baseUrl}/' +
-                                                      snapshot.getImage(i),
-                                                ),
+                                  padding: 8,
+                                  margin: 8,
+                                  color: Colors.grey.shade100,
+                                  borderRadius: 10,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(1.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            child: Image(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                '${Constans.baseUrl}/' +
+                                                    snapshot.getImage(i),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  snapshot.getPlantName(i),
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                snapshot.getPlantName(i),
+                                                style: const TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 10.0),
+                                                child: Text(
+                                                  snapshot.getDescription(i),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 4,
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 10.0),
-                                                  child: Text(
-                                                    snapshot.getDescription(i),
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    maxLines: 4,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               );

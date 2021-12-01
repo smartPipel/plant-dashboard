@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_dashboard/app/data/constants.dart';
 import 'package:plant_dashboard/app/modules/plant_list/provider/side_detail_preview_provider.dart';
+import 'package:plant_dashboard/app/widgets/custom_card.dart';
 import 'package:provider/provider.dart';
 
 class SideDetailPreview extends StatefulWidget {
@@ -44,25 +45,60 @@ class _SideDetailPreviewState extends State<SideDetailPreview> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.network(snapshot.getImage(i)),
+                        CustomCard(
+                          height: Constans.defaultHeight(context) * .2,
+                          backgroundImageUrl: snapshot.getImage(i),
+                          // child: ClipRRect(
+                          //   borderRadius: BorderRadius.circular(15),
+                          //   child: Image.network(),
+                          // ),
                         ),
-                        Text(
-                          snapshot.getId(i),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: Constans.defaultFontFamily),
+                        CustomCard(
+                          height: 40,
+                          child: Text(
+                            snapshot.getId(i),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: Constans.defaultFontFamily),
+                          ),
                         ),
-                        Text(
-                          snapshot.getPlantName(i),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: Constans.defaultFontFamily),
+                        CustomCard(
+                          height: 40,
+                          child: Text(
+                            snapshot.getPlantName(i),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: Constans.defaultFontFamily),
+                          ),
                         ),
-                        Text(snapshot.getLatinName(i)),
-                        Text(snapshot.getPlantType(i)),
-                        Text(snapshot.getDescription(i)),
+                        CustomCard(
+                          height: 40,
+                          child: Text(
+                            snapshot.getLatinName(i),
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                                fontFamily: Constans.defaultFontFamily),
+                          ),
+                        ),
+                        CustomCard(
+                          height: 40,
+                          child: Text(
+                            snapshot.getPlantType(i),
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontFamily: Constans.defaultFontFamily),
+                          ),
+                        ),
+                        CustomCard(
+                          height: double.maxFinite,
+                          child: Text(
+                            snapshot.getDescription(i),
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontFamily: Constans.defaultFontFamily),
+                          ),
+                        ),
                       ],
                     ),
                   );

@@ -34,6 +34,7 @@ dependencies:
     sdk: flutter
   google_fonts: ^2.1.0
   provider: ^6.0.1
+  responsive_table: ^0.1.1+8
 
 dev_dependencies:
   flutter_lints: ^1.0.0
